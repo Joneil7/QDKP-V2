@@ -215,7 +215,7 @@ function QDKP2_BidM_BidWatcher(txt,player,channel)
   txt=string.lower(txt)
   txt=string.gsub(txt,"^[%s]+","")
   txt=string.gsub(txt,"[%s]+$","")
-  table.insert(QDKP2_BidM_Keywords, {keywords="$nk, $nк",value="$n*1000"})
+  table.insert(QDKP2_BidM_Keywords, {keywords="$nk, $n.1k, $n.2k, $n.3k, $n.4k, $n.5k, $n.6k, $n.7k, $n.8k, $n.9k, $nк, $n.1к, $n.2к, $n.3к, $n.4к, $n.5к, $n.6к, $n.7к, $n.8к, $n.9к,",value="$n*1000"})
   for i,v in pairs(QDKP2_BidM_Keywords) do
     local kw=string.lower(v.keywords)
     kwl= QDKP2_SplitString(kw,',')
