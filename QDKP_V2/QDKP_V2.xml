@@ -6,7 +6,7 @@
 
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
 
-  <Script file="Options.ini"/>
+  <Script file="Code/DefaultOptions.lua"/>
 
   <Frame name="QDKP2">
     <Scripts>
