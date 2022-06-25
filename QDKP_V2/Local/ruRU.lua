@@ -193,6 +193,7 @@ if GetLocale()=='ruRU' then
   --bid announcements
   if QDKP2_LOCALIZE_MESSAGES then
     QDKP2_LOC_BidMStartString="Разыгрывается $ITEM."
+    QDKP2_LOC_BidMStartStringMinBidStep="Разыгрывается $ITEM. Минимальная ставка: $BID DKP. Минимальный шаг: $STEP DKP."
     QDKP2_LOC_BidMCancelString="Розыгрыш $ITEM отменен."
     QDKP2_LOC_BidMWinnerString="$NAME выйграл $ITEM за $AMOUNT DKP."
     QDKP2_LOC_BidMWinnerStringNoDKP="$NAME выйграл $ITEM."

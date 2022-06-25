@@ -36,9 +36,16 @@ function QDKP2_BidM_StartBid(item)
   QDKP2_BidM.LIST = {}
   QDKP2_BidM.BIDDING = true
   QDKP2_BidM.ACCEPT_BID = true
-  if QDKP2_BidM_AnnounceStart and item and #item>0 then
-    local mess=QDKP2_LOC_BidMStartString
-    mess=string.gsub(mess,"$ITEM",tostring(QDKP2_BidM.ITEM or '-'))
+  if QDKP2_BidM_AnnounceStart and not QDKP2_BidM_AnnounceStartMinBidStep and item and #item>0 then
+    local mess = QDKP2_LOC_BidMStartString
+    mess = string.gsub(mess,"$ITEM",tostring(QDKP2_BidM.ITEM or '-'))
+    QDKP2_BidM_SendMessage(nil,"MANAGER","bid_start",mess)
+  end
+  if QDKP2_BidM_AnnounceStartMinBidStep and item and #item>0 then
+    local mess = QDKP2_LOC_BidMStartStringMinBidStep
+    mess = string.gsub(mess,"$BID",tostring(QDKP2_BidM_MinBid))
+    mess = string.gsub(mess,"$STEP",tostring(QDKP2_BidM_MinStep))
+    mess = string.gsub(mess,"$ITEM",tostring(QDKP2_BidM.ITEM or '-'))
     QDKP2_BidM_SendMessage(nil,"MANAGER","bid_start",mess)
   end
   if QDKP2_BidM_LogBids and item and #item>0 then

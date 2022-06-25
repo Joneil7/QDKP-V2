@@ -186,6 +186,7 @@ QDKP2_LOC_CloseIMSessWarn="The IronMan bonus has not been finalized.\nIf you clo
 
 --bid announcements
 QDKP2_LOC_BidMStartString="Rolling for $ITEM started. Please begin rolling."
+QDKP2_LOC_BidMStartStringMinBidStep="Rolling for $ITEM started. Min bid: $BID DKP. Min step: $STEP DKP."
 QDKP2_LOC_BidMCancelString="Biding for $ITEM has been cancelled."
 QDKP2_LOC_BidMWinnerString="$NAME won $ITEM with $AMOUNT DKP. Gratz $NAME."
 QDKP2_LOC_BidMWinnerStringNoDKP="$NAME won $ITEM."
