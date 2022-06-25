@@ -23,6 +23,7 @@
 
 function QDKP2_BidM_StartBid(item)
 -- Starts a new bid. item is the string of the item to bid (or a generic reason)
+  local currentValue = 0
   if QDKP2_BidM_LogBids and not QDKP2_ManagementMode() then
     QDKP2_NeedManagementMode()
     return
@@ -51,13 +52,14 @@ function QDKP2_BidM_StartBid(item)
   if QDKP2_BidM_LogBids and item and #item>0 then
     local mess=QDKP2_LOC_BidStartLog
     mess=mess:gsub("$ITEM",tostring(QDKP2_BidM.ITEM or '-'))
-		QDKP2log_Entry("RAID",mess, QDKP2LOG_BIDDING)
+    QDKP2log_Entry("RAID",mess, QDKP2LOG_BIDDING)
     QDKP2_Events:Fire("DATA_UPDATED","log")
   end
 end
 
 function QDKP2_BidM_CloseBid()
 --stops the bidding. Does not clear the data.
+  currentValue = nil
   QDKP2_BidM.BIDDING = nil
   QDKP2_Events:Fire("DATA_UPDATED","roster")
 end
@@ -69,7 +71,7 @@ function QDKP2_BidM_CancelBid()
   if QDKP2_BidM_LogBids and QDKP2_BidM.ITEM and #QDKP2_BidM.ITEM>0 then
     local mess=QDKP2_LOC_BidCancelLog
     mess=mess:gsub("$ITEM",tostring(QDKP2_BidM.ITEM or '-'))
-		QDKP2log_Entry("RAID",mess, QDKP2LOG_BIDDING)
+    QDKP2log_Entry("RAID",mess, QDKP2LOG_BIDDING)
     QDKP2_Events:Fire("DATA_UPDATED","log")
   end
 
@@ -295,15 +297,38 @@ function QDKP2_BidM_BidWatcher(txt,player,channel)
               QDKP2_BidM_SendMessage(player,"NOBID",channel,mess)
               return false
             elseif not QDKP2_BidM_OverBid and dkp > QDKP2_GetNet(player) then --is the bid more than the player has?
-              local txt=QDKP2_LOC_BidGreater
-              txt=string.gsub(txt,"$NET",tostring(QDKP2_GetNet(player)))
-              QDKP2_BidM_SendMessage(player,"NOBID",channel,txt)
+              local mess=QDKP2_LOC_BidGreater
+              mess=string.gsub(mess,"$NET",tostring(QDKP2_GetNet(player)))
+              QDKP2_BidM_SendMessage(player,"NOBID",channel,mess)
+              return false
+            elseif currentValue ~= nil and dkp < currentValue then            --is the bid less current max bid another player?
+              local mess = QDKP2_LOC_BidLessCurrentBid
+              if currentValue < QDKP2_BidM_BidStep1 then
+                mess=string.gsub(mess,"$MINSTEP",tostring(QDKP2_BidM_MinBid))
+              elseif currentValue >= QDKP2_BidM_BidStep1 and currentValue < QDKP2_BidM_BidStep2 then
+                mess=string.gsub(mess,"$MINSTEP",tostring(QDKP2_BidM_Step1))
+              elseif currentValue >= QDKP2_BidM_BidStep2 then
+                mess=string.gsub(mess,"$MINSTEP",tostring(QDKP2_BidM_Step2))
+              end
+              QDKP2_BidM_SendMessage(player,"NOBID",channel,mess)
               return false
             end
           end
 
           QDKP2_Debug(3,"BidM","Bid ok, adding to the list.")
           QDKP2_BidM.LIST[player]=newBet
+
+          if currentValue == nil then currentValue = 0; end
+          if newBet.value >= currentValue and newBet.value >= QDKP2_BidM_MinBid then
+            if newBet.value < QDKP2_BidM_BidStep1 then
+              currentValue = newBet.value + QDKP2_BidM_MinStep
+            elseif newBet.value >= QDKP2_BidM_BidStep1 and newBet.value < QDKP2_BidM_BidStep2 then
+              currentValue = newBet.value + QDKP2_BidM_Step1
+            elseif newBet.value >= QDKP2_BidM_BidStep2 then
+              currentValue = newBet.value + QDKP2_BidM_Step2
+            end
+          end
+
           if QDKP2_BidM_CountdownCount then QDKP2_BidM_CountdownCancel(); end--if i'm doing a countdown, cancel it
           QDKP2_BidM_SendMessage(player,"ACK",channel,QDKP2_LOC_BidAck)
           if QDKP2_BidM_LogBids and QDKP2_BidM.ITEM and #QDKP2_BidM.ITEM>0 then
@@ -355,7 +380,7 @@ local function EvaluateExpression(player,bid_obj,expr,bidList)
   expr=string.gsub(expr,"$total",tostring(total))
   expr=string.gsub(expr,"$spent",tostring(spent))
   expr=string.gsub(expr,"$roll",tostring(bid_obj.roll))
-	expr=string.gsub(expr,"$vroll",tostring(bid_obj.roll)) --this is to bypass $roll keyword checking, if needed.
+  expr=string.gsub(expr,"$vroll",tostring(bid_obj.roll)) --this is to bypass $roll keyword checking, if needed.
   expr=string.gsub(expr,"$minbid",tostring(QDKP2_BidM_MinBid))
   expr=string.gsub(expr,"$mintowin", tostring(mintowin))
   expr=string.gsub(expr,"$n",tostring(bid_obj.bid))  --must be last because it would bug all keywords that begin with n
@@ -386,13 +411,13 @@ function QDKP2_UpdateBid(player,bid_obj,finalUpdate)
 
   --auto-roll if enabled and needed
   if not bid_obj.roll and
-		string.find(tostring(bid_voice.value)..tostring(bid_voice.dkp)..tostring(bid_voice.min)..tostring(bid_voice.max)..tostring(bid_voice.eligible),"$roll") then
-		if QDKP2_BidM_AutoRoll then
-			bid_obj.roll=math.random(1,100)
-			QDKP2_Debug(2,"BidM","Roll needed and not already detected. Silent rolling: "..tostring(bid_obj.roll))
-		else
-			QDKP2_BidM_SendMessage(player,"NOBID",bid_obj.channel,QDKP2_LOC_BidRollFirst)
-		end
+    string.find(tostring(bid_voice.value)..tostring(bid_voice.dkp)..tostring(bid_voice.min)..tostring(bid_voice.max)..tostring(bid_voice.eligible),"$roll") then
+    if QDKP2_BidM_AutoRoll then
+      bid_obj.roll=math.random(1,100)
+      QDKP2_Debug(2,"BidM","Roll needed and not already detected. Silent rolling: "..tostring(bid_obj.roll))
+    else
+      QDKP2_BidM_SendMessage(player,"NOBID",bid_obj.channel,QDKP2_LOC_BidRollFirst)
+    end
   end
 
   --eligibility calculation
@@ -545,7 +570,7 @@ function QDKP2_BidM_RollWatch(player,roll,rollLow,rollHigh)
       local mess=QDKP2_LOC_BidRollsLog
       mess=mess:gsub("$ROLL",tostring(roll))
       mess=mess:gsub("$ITEM",QDKP2_BidM.ITEM)
-			QDKP2log_Entry(player,mess, QDKP2LOG_BIDDING)
+      QDKP2log_Entry(player,mess, QDKP2LOG_BIDDING)
       QDKP2_Events:Fire("DATA_UPDATED","log")
     end
     QDKP2_BidM_BidWatcher("/roll",player,"GROUP")
@@ -564,6 +589,7 @@ function QDKP2_BidM_CancelPlayer(name)
     QDKP2_Events:Fire("DATA_UPDATED","roster")
     QDKP2_BidM_SendMessage(name,"NOBID",bid.channel,QDKP2_LOC_BidRemove)
     QDKP2_Events:Fire("DATA_UPDATED","log")
+    currentValue = 0
   else
     QDKP2_Debug(1,"BidManager","Trying to remove a bidder that isn't in list.")
   end
