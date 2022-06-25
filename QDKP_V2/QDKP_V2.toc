@@ -25,7 +25,7 @@ Code\Lib\Deformat-2.0.lua
 Code\Lib\UTF8\utf8data.lua
 Code\Lib\UTF8\utf8.lua
 
-Code\DefaultOptions.lua
+Options.lua
 Code\Core\DKP_Editing.lua
 Code\Core\DKP_Management.lua
 Code\Core\Events.lua

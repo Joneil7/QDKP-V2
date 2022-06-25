@@ -157,10 +157,10 @@ if GetLocale()=='ruRU' then
   QDKP2_LOC_BidPlaceLog = 'Ставит на $ITEM: "$BIDTEXT"'
   QDKP2_LOC_BidPlaceLogVal = "($VALUE)"
   QDKP2_LOC_BidRemovedLog = "Последняя ставка отменена."
-  QDKP2_LOC_BidRollsLog = "Ролит $ROLL на $ITEM"
-  QDKP2_LOC_BidStartLog = "Начаты ставки на $ITEM."
-  QDKP2_LOC_BidWinLog = "выигрывает ставки на $ITEM."
-  QDKP2_LOC_BidCancelLog = "Ставки на $ITEM отменены."
+  QDKP2_LOC_BidRollsLog = "Ролл $ROLL на $ITEM"
+  QDKP2_LOC_BidStartLog = "Разыгрывается $ITEM."
+  QDKP2_LOC_BidWinLog = "выигрывает $ITEM."
+  QDKP2_LOC_BidCancelLog = "Розыгрыш $ITEM отменен."
   QDKP2_LOC_NoEligible = "Вы не можете использовать это ключевое слово."
 
   --Log
