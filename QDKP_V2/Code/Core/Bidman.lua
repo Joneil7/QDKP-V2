@@ -215,13 +215,15 @@ function QDKP2_BidM_BidWatcher(txt,player,channel)
   txt=string.lower(txt)
   txt=string.gsub(txt,"^[%s]+","")
   txt=string.gsub(txt,"[%s]+$","")
-  table.insert(QDKP2_BidM_Keywords, {keywords="$nk, $n.1k, $n.2k, $n.3k, $n.4k, $n.5k, $n.6k, $n.7k, $n.8k, $n.9k, $nк, $n.1к, $n.2к, $n.3к, $n.4к, $n.5к, $n.6к, $n.7к, $n.8к, $n.9к,",value="$n*1000"})
+  table.insert(QDKP2_BidM_Keywords, {keywords="$nk, $nк",value="$n*1000"})
+  table.insert(QDKP2_BidM_Keywords, {keywords="$n.$lk, $n.$lк",value="$n*1000", val="$l*100"})
   for i,v in pairs(QDKP2_BidM_Keywords) do
     local kw=string.lower(v.keywords)
     kwl= QDKP2_SplitString(kw,',')
     for j,w in pairs(kwl) do
       local trigStr=w
       trigStr=string.gsub(trigStr,"$n","[0-9]+")
+      trigStr=string.gsub(trigStr,"$l","[0-9]+")
       trigStr=string.gsub(trigStr,"^[%s]+","")
       trigStr=string.gsub(trigStr,"[%s]+$","")
       trigStr="^"..trigStr.."$"
@@ -233,21 +235,23 @@ function QDKP2_BidM_BidWatcher(txt,player,channel)
         end
         local oldBet=QDKP2_BidM.LIST[player]
         if QDKP2_BidM_AllowMultipleBid  or not (oldBet and oldBet.txt) then
-          local _,_,bid=string.find(txt,"([0-9]+)")
+          local _,_,bid=string.find(txt,"^([0-9]+)")
+          local _,_,bidl=string.find(txt,"%p([0-9]+)")
           if not oldBet then oldBet={}; end
           local oldValue = oldBet.value
           local oldDkp = oldBet.dkp
           local newBet={}
+
           newBet.roll=oldBet.roll
           newBet.txt=txt
           newBet.bid_voice=v
           newBet.channel=channel
           newBet.trig_str=w
           newBet.bid=bid
+          newBet.bidl=bidl
 
           --updates the value and dkp variables. if returns nil, has encountered an error.
           if not QDKP2_UpdateBid(player,newBet) then return; end
-
           --controls
           --all controls must be made at bid time. Can't say at the end of the bid that the winner's bet is invalid.
 
@@ -255,6 +259,7 @@ function QDKP2_BidM_BidWatcher(txt,player,channel)
             QDKP2_BidM_SendMessage(player,"NOBID",channel,QDKP2_LOC_NoEligible)
             return false
           end
+
           if newBet.value and oldValue then
             if oldValue==newBet.value then    --is it the same bid as the previous?
               QDKP2_BidM_SendMessage(player,"NOBID",channel,QDKP2_LOC_BidEqual)
@@ -339,7 +344,6 @@ local function EvaluateExpression(player,bid_obj,expr,bidList)
     expr=string.gsub(expr,"$lowerbid"..tostring(i),'nil')
     expr=string.gsub(expr,"$higherbid"..tostring(i),'nil')
   end
-
   expr=string.gsub(expr,"$net",tostring(net))
   expr=string.gsub(expr,"$total",tostring(total))
   expr=string.gsub(expr,"$spent",tostring(spent))
@@ -348,6 +352,7 @@ local function EvaluateExpression(player,bid_obj,expr,bidList)
   expr=string.gsub(expr,"$minbid",tostring(QDKP2_BidM_MinBid))
   expr=string.gsub(expr,"$mintowin", tostring(mintowin))
   expr=string.gsub(expr,"$n",tostring(bid_obj.bid))  --must be last because it would bug all keywords that begin with n
+  expr=string.gsub(expr,"$l",tostring(bid_obj.bidl))  --must be last because it would bug all keywords that begin with l
   local Exec,value
   if bid_obj.asFunc then Exec,value=loadstring(expr)
   else Exec,value=loadstring("return "..expr)
@@ -355,6 +360,7 @@ local function EvaluateExpression(player,bid_obj,expr,bidList)
   if not Exec then return nil, value; end
   local callStat; callStat, value= pcall(Exec)
   if callStat and type(value)=='number' and QDKP2_BidM_RoundValue then value=RoundNum(value); end
+
   return callStat, value
 end
 
@@ -389,6 +395,7 @@ function QDKP2_UpdateBid(player,bid_obj,finalUpdate)
     good,bid_obj.eligible=EvaluateExpression(player,bid_obj,expr,bidList)
     if not good then
       local msg='Bidmanager: Error in "eligible" field!\n'..tostring(bid_obj.eligible).."\nExpression="..tostring(expr)
+
       if QDKP2_BidM_DebugValues then
         QDKP2_Msg(msg,"ERROR")
       else
@@ -433,8 +440,13 @@ function QDKP2_UpdateBid(player,bid_obj,finalUpdate)
 
   -- bid_obj.value calculation
   if bid_voice.value or string.find(bid_obj.trig_str,"$n") then
-    local expr=bid_voice.value or "$n"
-    good,bid_obj.value=EvaluateExpression(player,bid_obj,expr,bidList)
+    local expr = bid_voice.value or "$n"
+    local exprl = bid_voice.val
+    good,bid_obj.value = EvaluateExpression(player,bid_obj,expr,bidList)
+    if exprl ~= nil then
+      good,bid_obj.val = EvaluateExpression(player,bid_obj,exprl,bidList)
+      bid_obj.value = bid_obj.value + bid_obj.val
+    end
     if not good or not bid_obj.value or not tonumber(bid_obj.value) then
       local msg='Bidmanager: Error in "value" field!\n'..tostring(bid_obj.value).."\nExpression="..tostring(expr)
       if QDKP2_BidM_DebugValues then
