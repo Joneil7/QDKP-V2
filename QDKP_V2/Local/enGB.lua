@@ -1,8 +1,9 @@
--- Copyright 2010 Riccardo Belloli (belloli@email.it)
+-- Copyright 2022 Nerget
 -- This file is a part of QDKP_V2 (see about.txt in the Addon's root folder)
 
 --        ## ENGLISH-UNITED STATES (enUS) LOCALIZATION ##
 
+QDKP2_LOC_Authors = "Thanks for using QDKP by Verrisely, Soulflayer Guild"
 --General
 QDKP2_LOC_Net = "Net"
 QDKP2_LOC_Spent = "Spent"

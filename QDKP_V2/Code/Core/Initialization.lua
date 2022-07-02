@@ -318,6 +318,7 @@ function QDKP2_OnLoad()
 
     LoadedMsg = string.gsub(LoadedMsg, "$VERSION", QDKP2_VERSION)
     QDKP2_Msg(LoadedMsg);
+    QDKP2_Msg(QDKP2_LOC_Authors);
     QDKP2_Debug(2, "Core", "Addon started")
 end
 

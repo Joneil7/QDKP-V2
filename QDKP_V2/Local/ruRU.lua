@@ -1,8 +1,10 @@
--- Copyright 2019 Homerocker (molodoy3561@gmail.com)
+-- Copyright 2022 Nerget
 -- This file is a part of QDKP_V2 (see about.txt in the Addon's root folder)
 
 --        ## RUSSIAN (ruRU) LOCALIZATION ##
 if GetLocale() == 'ruRU' then
+
+    QDKP2_LOC_Authors = "Спасибо что используете QDKP от Verrisely, гильдия Soulflayer"
     --General
     QDKP2_LOC_Net = "Тек."
     QDKP2_LOC_Spent = "Потрач."
@@ -18,7 +20,7 @@ if GetLocale() == 'ruRU' then
     QDKP2_LOC_ReadOnlyMode = "Только для просмотра"
     QDKP2_LOC_OfficerRights = "Права офицера:"
     QDKP2_LOC_OfficerEdit1 = "Вы "
-    QDKP2_LOC_OfficerEdit2 = " Редактировать "
+    QDKP2_LOC_OfficerEdit2 = " редактировать "
     QDKP2_LOC_OfficerEdit3 = " заметки."
     QDKP2_LOC_OfficerEditYes = "МОЖЕТЕ"
     QDKP2_LOC_OfficerEditNo = "НЕМОЖЕТЕ"

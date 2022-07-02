@@ -43,7 +43,6 @@ Code\Core\Misc.lua
 Code\Core\Bidman.lua
 
 Local\enGB.lua
-Local\frFR.lua
 Local\ruRU.lua
 
 Code\Logging\Constants.lua
