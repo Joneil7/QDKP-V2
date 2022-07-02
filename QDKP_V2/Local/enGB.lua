@@ -4,6 +4,8 @@
 --        ## ENGLISH-UNITED STATES (enUS) LOCALIZATION ##
 
 QDKP2_LOC_Authors = "Thanks for using QDKP by Verrisely, Soulflayer Guild"
+
+
 --General
 QDKP2_LOC_Net = "Net"
 QDKP2_LOC_Spent = "Spent"
@@ -50,6 +52,7 @@ QDKP2_LOC_EnterRandTxt = "Please enter a random text."
 QDKP2_LOC_CantReadOfficerNotes = "QDKP is set to read DKP data from officer notes, but your rank hasn't the right to view them. Either your guild or QDKP is misconfigured, tell your Guild Master about this issue."
 QDKP2_LOC_CantReadOfficerNotes = "Auto Boss Award enabled."
 
+
 --Raid Manager
 QDKP2_LOC_IsInRaid = "Is in the raid as the session starts"
 QDKP2_LOC_IsInRaidOffline = "Joins the session, offline"
@@ -65,6 +68,7 @@ QDKP2_LOC_RemRaid = "Removed from Raid Roster"
 QDKP2_LOC_ExtJoins = "$NAME has joined the active raid. Removed from standby list"
 QDKP2_LOC_CurrentSession = "Current session"
 
+
 --IRONMAN BONUS
 QDKP2_LOC_FinishWithRaid = "The IronMan Bonus has not been closed yet.\nDo you want to close it now?"
 QDKP2_LOC_StartButOffline = "IronMan bonus has started but player is offline"
@@ -72,6 +76,7 @@ QDKP2_LOC_IronmanMarkPlaced = "IronMan mark placed"
 QDKP2_LOC_DataWiped = "IronMan Data has been wiped"
 QDKP2_LOC_No1Awarded = "Nobody awarded the IronMan Bonus"
 QDKP2_LOC_NumAwarded = "$NUMBER players awarded $DKP DKP as IronMan Bonus"
+
 
 --DKP Modify
 QDKP2_LOC_Gains = "Gains $GAIN DKP"
@@ -103,6 +108,7 @@ QDKP2_LOC_MaxNetLimitLog = "Maximum net DKP cap reached. Gain has been adjusted"
 QDKP2_LOC_MinNetLimit = "$NAME's DKP loss has been limitated because he reached the Minimum Net DKP Cap ($MINIMUMNET)"
 QDKP2_LOC_MinNetLimitLog = "Minimum net DKP cap reached. Loss has been adjusted"
 
+
 --lost awards
 QDKP2_LOC_NODKP_Offline = "Offline"
 QDKP2_LOC_NODKP_Rank = "No-DKP Rank"
@@ -119,6 +125,7 @@ QDKP2_LOC_NoDKPZS = "$WHYNOT. Loses ZS share of $AMOUNT DKP from $GIVER"
 QDKP2_LOC_NoDKPZSReas = "$WHYNOT. Loses ZS share of $AMOUNT DKP for $REASON"
 QDKP2_LOC_NoTick = "$WHYNOT. Loses Timer Tick"
 
+
 --timer
 QDKP2_LOC_TimerTick = "Timer Tick"
 QDKP2_LOC_IntegerTime = "Hourly Bonus"
@@ -128,6 +135,7 @@ QDKP2_LOC_TimerResumed = "Timer resumed"
 QDKP2_LOC_TimerStarted = "Timer started"
 QDKP2_LOC_TimerPaused = "Timer paused"
 QDKP2_LOC_GUItimer = "%M:%S to tick"
+
 
 --upload
 QDKP2_LOC_NoMod = "No DKP modifications have been done since last download/upload"
@@ -139,6 +147,7 @@ QDKP2_LOC_IndexNoFoundLog = "Has a broken guild cache index (Upload Failed)"
 QDKP2_LOC_CheckOK = "CHECK: DKP are syncronized."
 QDKP2_LOC_CheckAborted = "Upload Check aborted due to modifications done"
 
+
 --Externals
 QDKP2_LOC_CantAddExternalInGuild = "Can't add $NAME as esternal: he is already in guild."
 QDKP2_LOC_CantDeleteUnexistingExternals = "Can't delete $NAME: he's not a valid external."
@@ -146,6 +155,7 @@ QDKP2_LOC_InvalidExternalName = "Invalid name for an external."
 QDKP2_LOC_ExternalRemoved = "$NAME has been removed from Guild Roster as External."
 QDKP2_LOC_ExtPost = "<QDKP2> External's DKP Amounts"
 QDKP2_LOC_ExtLine = "$NAME: Net=$NET, Total=$TOTAL, Hours=$HOURS"
+
 
 --Bid manager
 QDKP2_LOC_BidAck = "OK, bet received."
@@ -171,6 +181,14 @@ QDKP2_LOC_BidWinLog = "Wins the bidding for $ITEM."
 QDKP2_LOC_BidCancelLog = "Bidding for $ITEM has been cancelled."
 QDKP2_LOC_NoEligible = "You are not eligible to use that keyword."
 QDKP2_LOC_BidGiveLoot = "Are you sure you want to give the\n$ITEM\nto the" .. QDKP2_COLOR_BLUE .. "$NAME|r for" .. QDKP2_COLOR_GREEN .. "$AMOUNT|r DKP?"
+
+QDKP2_LOC_GLNotMasterLoot = "Loot method is not master looter."
+QDKP2_LOC_GLNotReceivedValidItem = "Did not received a valid item"
+QDKP2_LOC_GLNeedLootmaster = "You need to be lootmaster to give loot"
+QDKP2_LOC_GLNoLootWindowDetected = "No loot window detected or window is empty."
+QDKP2_LOC_GLNotFindItem = "Couldn't find the given item in the loot window."
+QDKP2_LOC_GLPlayerNotEligible = "Given player is not eligible to loot that object."
+
 
 --Log
 QDKP2_LOC_GeneralSession = "General"
@@ -236,6 +254,7 @@ QDKP2_LOC_StartedOn = "Started on: "
 QDKP2_LOC_SessionManager = "Session manager: "
 QDKP2_LOC_PersonalOverview = "Personal overview"
 
+
 --download
 QDKP2_LOC_NewSessionQ = "Enter the name of the New Session"
 QDKP2_LOC_NewSession = "New Session Started: $SESSIONNAME"
@@ -246,6 +265,7 @@ QDKP2_LOC_GuildRosterReverted = "All guild unuploaded changes have been reverted
 QDKP2_LOC_AddedToGuildRoster = "Added $NUM players to the guild roster."
 QDKP2_LOC_CloseIMSessWarn = "The IronMan bonus has not been finalized.\nIf you close the session the IronMan\nbonus will be discarded.\nYou still want to halt the session?"
 
+
 --bid announcements
 QDKP2_LOC_BidMStartString = "Rolling for $ITEM started. Please begin rolling."
 QDKP2_LOC_BidMStartStringMinBidStep = "Rolling for $ITEM started. Min bid: $BID DKP. Min step: $STEP DKP."
@@ -253,10 +273,12 @@ QDKP2_LOC_BidMCancelString = "Biding for $ITEM has been cancelled."
 QDKP2_LOC_BidMWinnerString = "$NAME won $ITEM with $AMOUNT DKP. Gratz $NAME."
 QDKP2_LOC_BidMWinnerStringNoDKP = "$NAME won $ITEM."
 
+
 --whisper
 QDKP2_LOC_AnnounceWhisperTxt = "$AWARDSPENDTXT. Your new net DKP amount is $NET"
 QDKP2_LOC_AnnounceWhisperRes = "$AWARDSPENDTXT for $REASON. Your new net DKP amount is $NET"
 QDKP2_LOC_AnnounceWhisperRev = "Your unuploaded changes have been cancelled. Your net DKP amount is $AMOUNT"
+
 
 --notify
 --[[
@@ -282,6 +304,7 @@ the second one is the string sent to a player who asked you for someone else's D
 ]]--
 QDKP2_LOC_NotifyString = "You have $NET DKP ($SESSGAINED gained and $SESSSPENT spent in this session)."
 QDKP2_LOC_NotifyString_u3p = "$NAME has $NET DKP ($SESSGAINED gained and $SESSSPENT spent in this session)."
+
 
 --GUI
 QDKP2_LOC_GUIRAIDMANAGEMENT = "Raid Management"

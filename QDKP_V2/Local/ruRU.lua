@@ -5,6 +5,8 @@
 if GetLocale() == 'ruRU' then
 
     QDKP2_LOC_Authors = "Спасибо что используете QDKP от Verrisely, гильдия Soulflayer"
+
+
     --General
     QDKP2_LOC_Net = "Тек."
     QDKP2_LOC_Spent = "Потрач."
@@ -50,6 +52,7 @@ if GetLocale() == 'ruRU' then
     QDKP2_LOC_EnterRandTxt = "Введите случайный текст."
     QDKP2_LOC_CantReadOfficerNotes = "QDKP настроен считывать DKP из офицерский заметок, но Ваш ранг не имеет прав для их просмотра. Ваша гильдия или QDKP настроены неверно, свяжитесь с Вашим гильд мастером."
 
+
     --Raid Manager
     QDKP2_LOC_IsInRaid = "В рейде во время начала сессии"
     QDKP2_LOC_IsInRaidOffline = "Присоединяется к сессии, офлайн"
@@ -65,6 +68,7 @@ if GetLocale() == 'ruRU' then
     QDKP2_LOC_ExtJoins = "$NAME присоединился к активному рейду. Удален из списка замены"
     QDKP2_LOC_CurrentSession = "Текущая сессия"
 
+
     --IRONMAN BONUS
     QDKP2_LOC_FinishWithRaid = "Бонус IronMan еще не был закрыт.\nВы хотите закрыть его сейчас?"
     QDKP2_LOC_StartButOffline = "Бонус IronMan начался, но игрок офлайн"
@@ -72,6 +76,7 @@ if GetLocale() == 'ruRU' then
     QDKP2_LOC_DataWiped = "Данные IronMan очищены"
     QDKP2_LOC_No1Awarded = "Никто не получил бонус IronMan"
     QDKP2_LOC_NumAwarded = "$NUMBER игроков получило $DKP DKP как бонус IronMan"
+
 
     --DKP Modify
     if QDKP2_LOCALIZE_MESSAGES then
@@ -107,6 +112,7 @@ if GetLocale() == 'ruRU' then
     QDKP2_LOC_MinNetLimit = "$NAME теряет ограниченное DKP, т. к. текущее DKP достигло минимума ($MINIMUMNET)"
     QDKP2_LOC_MinNetLimitLog = "Достигнут минимум текущего DKP. Снятое DKP было урезано"
 
+
     --lost awards
     QDKP2_LOC_NODKP_Offline = "Офлайн"
     QDKP2_LOC_NODKP_Rank = "No-DKP Ранг"
@@ -123,6 +129,7 @@ if GetLocale() == 'ruRU' then
     QDKP2_LOC_NoDKPZSReas = "$WHYNOT. Теряет долю от нулевой суммы в количестве $AMOUNT DKP от $GIVER за: $REASON"
     QDKP2_LOC_NoTick = "$WHYNOT. Пропускает тик таймера"
 
+
     --timer
     QDKP2_LOC_TimerTick = "Тик таймера"
     QDKP2_LOC_IntegerTime = "Почасовой бонус"
@@ -132,6 +139,7 @@ if GetLocale() == 'ruRU' then
     QDKP2_LOC_TimerStarted = "Таймер запущен"
     QDKP2_LOC_TimerPaused = "Таймер поставлен на паузу"
     QDKP2_LOC_GUItimer = "%M:%S до тика таймера"
+
 
     --upload
     QDKP2_LOC_NoMod = "Не было сделано изменений DKP с момента последней синхронизации."
@@ -143,6 +151,7 @@ if GetLocale() == 'ruRU' then
     QDKP2_LOC_CheckOK = "ОТЧЕТ: DKP синхронизовано."
     QDKP2_LOC_CheckAborted = "Проверка загруженных данных отменена из-за внесенных изменений."
 
+
     --Externals
     QDKP2_LOC_CantAddExternalInGuild = "Невозможно добавить $NAME как внешнего персонажа: уже в гильдии."
     QDKP2_LOC_CantDeleteUnexistingExternals = "Невозможно удалить $NAME: не является внешним персонажем."
@@ -150,6 +159,7 @@ if GetLocale() == 'ruRU' then
     QDKP2_LOC_ExternalRemoved = "Внешний персонаж $NAME удален из списка гильдии."
     QDKP2_LOC_ExtPost = "<QDKP2> Количество DKP внешнего персонажа."
     QDKP2_LOC_ExtLine = "$NAME: Текущее=$NET, Всего=$TOTAL, Часы=$HOURS"
+
 
     --Bid manager
     if QDKP2_LOCALIZE_MESSAGES then
@@ -178,6 +188,15 @@ if GetLocale() == 'ruRU' then
     QDKP2_LOC_BidCancelLog = "Розыгрыш $ITEM отменен."
     QDKP2_LOC_NoEligible = "Вы не можете использовать это ключевое слово."
     QDKP2_LOC_BidGiveLoot = "Вы уверены что хотите отдать\n$ITEM\n" .. QDKP2_COLOR_BLUE .. "$NAME|r за " .. QDKP2_COLOR_GREEN .. "$AMOUNT|r DKP?"
+
+    QDKP2_LOC_GLNotMasterLoot = "Необходим метод распределения лута: ответственный"
+    QDKP2_LOC_GLNotReceivedValidItem = "Нужный предмет не найден"
+    QDKP2_LOC_GLNeedLootmaster = "Вы должны быть ответственным за добычу, чтобы распределять лут"
+    QDKP2_LOC_GLNoLootWindowDetected = "Окно добычи не открыто, или в нем пусто"
+    QDKP2_LOC_GLNotFindItem = "Не удалось найти данный предмет в окне добычи"
+    QDKP2_LOC_GLPlayerNotEligible = "Данный игрок не может получить этот предмет"
+
+
     --Log
     QDKP2_LOC_GeneralSession = "Общая"
     QDKP2_LOC_NoSessName = "Нет имени"
@@ -243,7 +262,6 @@ if GetLocale() == 'ruRU' then
     QDKP2_LOC_PersonalOverview = "Персональный обзор"
 
 
-
     --download
     QDKP2_LOC_NewSessionQ = "Введите название новой сессии"
     QDKP2_LOC_NewSession = "Открыта новая сессия: $SESSIONNAME"
@@ -254,6 +272,7 @@ if GetLocale() == 'ruRU' then
     QDKP2_LOC_AddedToGuildRoster = "Добавлено $NUM игроков в список гильдии."
     QDKP2_LOC_CloseIMSessWarn = "Бонус IronMan не закрыт.\nЕсли Вы закроете сессию,\nбонус IronMan будет отменем.\nВы все еще хотите закрыть сессию?"
 
+
     --bid announcements
     if QDKP2_LOCALIZE_MESSAGES then
         QDKP2_LOC_BidMStartString = "Разыгрывается $ITEM."
@@ -263,6 +282,7 @@ if GetLocale() == 'ruRU' then
         QDKP2_LOC_BidMWinnerStringNoDKP = "$NAME выйграл $ITEM."
     end
 
+
     --whisper
     if QDKP2_LOCALIZE_MESSAGES then
         QDKP2_LOC_AnnounceWhisperTxt = "$AWARDSPENDTXT. Ваше новое текущее DKP - $NET."
@@ -271,6 +291,7 @@ if GetLocale() == 'ruRU' then
         QDKP2_LOC_NotifyString = "У Вас $NET DKP ($SESSGAINED получено и $SESSSPENT потрачено за текущую сессию)."
         QDKP2_LOC_NotifyString_u3p = "У $NAME $NET DKP ($SESSGAINED получено и $SESSSPENT потрачено за текущую сессию)."
     end
+
 
     --GUI
     QDKP2_LOC_GUIRAIDMANAGEMENT = "Управление рейдом"

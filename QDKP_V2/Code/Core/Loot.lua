@@ -273,16 +273,16 @@ function QDKP2_GiveLootToPlayer(item, name, simul)
     local lootnum = GetNumLootItems()
     local itemName, itemLink = GetItemInfo(item or '')
     if not lootmethod == 'master' then
-        return false, 'Loot method is not master looter.';
+        return false, QDKP2_LOC_GLNotMasterLoot;
     end
     if not itemLink then
-        return false, 'Did not received a valid item';
+        return false, QDKP2_LOC_GLNotReceivedValidItem;
     end
     if not QDKP2_IsMasterLooter() then
-        return false, "Вам нужно быть лутмастером, чтобы получить лут";
+        return false, QDKP2_LOC_GLNeedLootmaster;
     end
     if not lootnum or lootnum == 0 then
-        return false, "Не открыто окно с добычей. Не могу отдать лут";
+        return false, QDKP2_LOC_GLNoLootWindowDetected;
     end
 
     local itemSlot
@@ -293,7 +293,7 @@ function QDKP2_GiveLootToPlayer(item, name, simul)
         end
     end
     if not itemSlot then
-        return false, "Couldn't find the given item in the loot window.";
+        return false, QDKP2_LOC_GLNotFindItem;
     end
 
     local nameSlot
@@ -304,7 +304,7 @@ function QDKP2_GiveLootToPlayer(item, name, simul)
         end
     end
     if not nameSlot then
-        return false, "Given player is not eligible to loot that object.";
+        return false, QDKP2_LOC_GLPlayerNotEligible;
     end
 
     if not simul then
