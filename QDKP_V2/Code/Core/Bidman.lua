@@ -381,7 +381,7 @@ function QDKP2_BidM_BidWatcher(txt, player, channel)
                     if QDKP2_BidM_CountdownCount then
                         QDKP2_BidM_CountdownCancel();
                     end--if i'm doing a countdown, cancel it
-                    QDKP2_BidM_SendMessage(player, "ACK", channel, QDKP2_LOC_BidAck)
+                    QDKP2_BidM_SendMessage(player, "ACK", 'bid_ack', QDKP2_LOC_BidAck)
                     if QDKP2_BidM_LogBids and QDKP2_BidM.ITEM and #QDKP2_BidM.ITEM > 0 then
                         local mess = QDKP2_LOC_BidPlaceLog
                         mess = mess:gsub("$ITEM", QDKP2_BidM.ITEM)
@@ -592,6 +592,10 @@ function QDKP2_BidM_SendMessage(player, t, channel, txt)
         channel = QDKP2_BidM_ChannelWin
     elseif channel == "countdown" then
         channel = QDKP2_BidM_ChannelCount
+    elseif channel == "bid_ack" then
+        channel = QDKP2_BidM_ChannelAck
+    elseif channel == "bid_reject" then
+        channel = QDKP2_BidM_ChannelReject
     end
 
     if channel == "RAID_WARNING" and not IsRaidOfficer() then
@@ -662,7 +666,7 @@ function QDKP2_BidM_CancelPlayer(name)
     if bid then
         QDKP2_BidM.LIST[name] = nil
         QDKP2_Events:Fire("DATA_UPDATED", "roster")
-        QDKP2_BidM_SendMessage(name, "NOBID", bid.channel, QDKP2_LOC_BidRemove)
+        QDKP2_BidM_SendMessage(name, "NOBID", 'bid_reject', QDKP2_LOC_BidRemove)
         QDKP2_Events:Fire("DATA_UPDATED", "log")
         currentValue = 0
     else

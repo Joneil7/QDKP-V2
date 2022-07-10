@@ -233,6 +233,8 @@ QDKP2_BidM_ChannelStart = "RAID_WARNING"
 QDKP2_BidM_ChannelCanc = "GROUP"
 QDKP2_BidM_ChannelWin = "RAID"
 QDKP2_BidM_ChannelCount = "GROUP"
+QDKP2_BidM_ChannelAck = "GROUP"
+QDKP2_BidM_ChannelReject = "GROUP"
 
 ------------------------- РАЗНОЕ --------------------------
 

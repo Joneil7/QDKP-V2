@@ -77,7 +77,7 @@ QDKP2_Config.Tree.args.Misc={
 		},
 		MISC_MinLevel={
 			type='range',
-			min=1,step=1,max=85,
+			min=1,step=1,max=80,
 			set=function(info,value) QDKP2_Config:SetVar(info,value); QDKP2_Config:RefreshGUI(); end,
 			order=50,
 		},

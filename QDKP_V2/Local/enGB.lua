@@ -27,8 +27,9 @@ QDKP2_LOC_OfficerEditYes = "CAN"
 QDKP2_LOC_OfficerEditNo = "CAN'T"
 QDKP2_LOC_OfficerEditPublic = "public"
 QDKP2_LOC_OfficerEditOfficer = "officer"
-QDKP2_LOC_ShowHide = "CLICK: Show/Hide QDKP"
+QDKP2_LOC_ShowHide = "LEFT+CLICK: Show/Hide QDKP"
 QDKP2_LOC_DragButton = "SHIFT+CLICK: Drag this button"
+QDKP2_LOC_ShowHideConfig = "RIGHT+CLICK: Show/Hide config"
 
 
 --Warnings/Questions

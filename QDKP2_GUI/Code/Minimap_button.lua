@@ -21,6 +21,7 @@ function QDKP2GUI_MiniBtn_LabelOn(arg1, arg2)
     GameTooltip:AddLine(QDKP2_GetPermissions())     --officer notes
     GameTooltip:AddLine(QDKP2_LOC_ShowHide, .8, .8, .8, 1)
     GameTooltip:AddLine(QDKP2_LOC_DragButton, .8, .8, .8, 1)
+    GameTooltip:AddLine(QDKP2_LOC_ShowHideConfig, .8, .8, .8, 1)
     GameTooltip:Show()
 end
 

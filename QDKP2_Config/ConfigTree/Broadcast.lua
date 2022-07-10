@@ -20,7 +20,7 @@ end
 
 QDKP2_Config.Tree.args.Broadcast={
 	type = 'group',
-	name = "Broadcast",
+	name = L.BRC_Name,
 	order=200,
 	args ={
 		BrcDesc1={

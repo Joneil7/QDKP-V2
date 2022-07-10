@@ -21,15 +21,16 @@ if GetLocale() == 'ruRU' then
     QDKP2_LOC_OfficerMode = "Офицер"
     QDKP2_LOC_ReadOnlyMode = "Только для просмотра"
     QDKP2_LOC_OfficerRights = "Права офицера:"
-    QDKP2_LOC_OfficerEdit1 = "Вы "
+    QDKP2_LOC_OfficerEdit1 = "Вам "
     QDKP2_LOC_OfficerEdit2 = " редактировать "
     QDKP2_LOC_OfficerEdit3 = " заметки."
-    QDKP2_LOC_OfficerEditYes = "МОЖЕТЕ"
-    QDKP2_LOC_OfficerEditNo = "НЕМОЖЕТЕ"
+    QDKP2_LOC_OfficerEditYes = "разрешено"
+    QDKP2_LOC_OfficerEditNo = "запрещено"
     QDKP2_LOC_OfficerEditPublic = "обычные"
     QDKP2_LOC_OfficerEditOfficer = "офицерские"
-    QDKP2_LOC_ShowHide = "CLICK: Показать/скрыть QDKP"
+    QDKP2_LOC_ShowHide = "LEFT+CLICK: Показать/скрыть QDKP"
     QDKP2_LOC_DragButton = "SHIFT+CLICK: Переместить иконку"
+    QDKP2_LOC_ShowHideConfig = "RIGHT+CLICK: Показать/скрыть настройки"
 
 
     --Warnings/Questions
@@ -410,34 +411,37 @@ if GetLocale() == 'ruRU' then
     QDKP2_LOC_GUISETQMODAMOUNTDESC = "Введите кол-во DKP, используемое\nв меню быстрого редактирования."
     QDKP2_LOC_GUIYES = "Да"
     QDKP2_LOC_GUINO = "Нет"
+
+
+    -- ALTS
+    QDKP2_LOC_ALTS_NOT_CLEAR_ALT_RELATIONS = "Привязка альта возможна только вне открытой сессии."
+    QDKP2_LOC_ALTS_ALT_IS_NIL = "Невозможно изменить привязку альта. Альт не выбран(не найден)."
+    QDKP2_LOC_ALTS_CLEAR_ALT_RELATION = "Сбросить приязку альта у "
+    QDKP2_LOC_ALTS_NOT_VALID_GUILDMEMBER = " не является челеном Гильдии."
+    QDKP2_LOC_ALTS_NOT_ALT = " не является альтом."
+    QDKP2_LOC_ALTS_TEXT_ADD_RELATION = "Привязать альта $ALT к мейну $MAIN.\nВы уверены?"
+    QDKP2_LOC_ALTS_MAKING_ALT_MAIN = "Привязка $ALT к $MAIN"
+    QDKP2_LOC_ALTS_ALTS_DIFFERENT_ALT = "Мейн персонаж не может быть и мейном, и альтом"
+    QDKP2_LOC_ALTS_CANT_DEFINE_ALT_MAIN = "Невозможно привязать альта к альту"
+    QDKP2_LOC_ALTS_ALT_DKP_NOT_EMPTY = "У $ALT уже имеется DKP.\nХотите объеденить его с $MAIN?\n($ALT имеет: "
+    QDKP2_LOC_ALTS_DKP_MERGING = " DKP объединено"
+    QDKP2_LOC_ALTS_UPLOAD_CHANGES_MODIFICATIONS = "Чтобы сохранить все изменения, в меню нажмите кнопку \"Загрузить\"."
+    QDKP2_LOC_ALTS_ALT_LOOP = " Похоже у вас в Гильдии есть альт, который привязан к альту, а не к мейну."
+    QDKP2_LOC_ALTS_ALT_LOOP_EDIT = "Чтобы решить проблему, необходимо проверить привязку персонажей."
+    QDKP2_LOC_ALTS_ALT_LOOP_PLAYERS = "Персонажи, создающие проблему: "
+
+
+    -- BACKUP
+    QDKP2_LOC_BK_COMPLETE = "Копирование завершено. "
+    QDKP2_LOC_BK_ENTRIES = " записей."
+    QDKP2_LOC_BK_NOT_FOUND = "Копия не найдена"
+    QDKP2_LOC_BK_RESTORE_ALL_DATA_LAST_BK = "Вы хотите восстановить все данные из последней копии?"
+    QDKP2_LOC_BK_RESTORED_BK = "восстановленная копия"
+    QDKP2_LOC_BK_NOT_RESTORED_BECAUSE_ALT = "У $ALT данные не восстановленны, так как является альтом $MAIN"
+    QDKP2_LOC_BK_NOT_RESTORED_BECAUSE_NOT_GUILD = "невозможно восстановить, так как не является челеном гильдии."
+    QDKP2_LOC_BK_RESTORED_ENTRIES = "Восстановлено записей: $GET. Отправте изменения, чтобы поменять заметки."
 end
 
 
--- ALTS
-QDKP2_LOC_ALTS_NOT_CLEAR_ALT_RELATIONS = "Привязка альта возможна только вне открытой сессии."
-QDKP2_LOC_ALTS_ALT_IS_NIL = "Невозможно изменить привязку альта. Альт не выбран(не найден)."
-QDKP2_LOC_ALTS_CLEAR_ALT_RELATION = "Сбросить приязку альта у "
-QDKP2_LOC_ALTS_NOT_VALID_GUILDMEMBER = " не является челеном Гильдии."
-QDKP2_LOC_ALTS_NOT_ALT = " не является альтом."
-QDKP2_LOC_ALTS_TEXT_ADD_RELATION = "Привязать альта $ALT к мейну $MAIN.\nВы уверены?"
-QDKP2_LOC_ALTS_MAKING_ALT_MAIN = "Привязка $ALT к $MAIN"
-QDKP2_LOC_ALTS_ALTS_DIFFERENT_ALT = "Мейн персонаж не может быть и мейном, и альтом"
-QDKP2_LOC_ALTS_CANT_DEFINE_ALT_MAIN = "Невозможно привязать альта к альту"
-QDKP2_LOC_ALTS_ALT_DKP_NOT_EMPTY = "У $ALT уже имеется DKP.\nХотите объеденить его с $MAIN?\n($ALT имеет: "
-QDKP2_LOC_ALTS_DKP_MERGING = " DKP объединено"
-QDKP2_LOC_ALTS_UPLOAD_CHANGES_MODIFICATIONS = "Чтобы сохранить все изменения, в меню нажмите кнопку \"Загрузить\"."
-QDKP2_LOC_ALTS_ALT_LOOP = " Похоже у вас в Гильдии есть альт, который привязан к альту, а не к мейну."
-QDKP2_LOC_ALTS_ALT_LOOP_EDIT = "Чтобы решить проблему, необходимо проверить привязку персонажей."
-QDKP2_LOC_ALTS_ALT_LOOP_PLAYERS = "Персонажи, создающие проблему: "
 
-
--- BACKUP
-QDKP2_LOC_BK_COMPLETE = "Копирование завершено. "
-QDKP2_LOC_BK_ENTRIES = " записей."
-QDKP2_LOC_BK_NOT_FOUND = "Копия не найдена"
-QDKP2_LOC_BK_RESTORE_ALL_DATA_LAST_BK = "Вы хотите восстановить все данные из последней копии?"
-QDKP2_LOC_BK_RESTORED_BK = "восстановленная копия"
-QDKP2_LOC_BK_NOT_RESTORED_BECAUSE_ALT = "У $ALT данные не восстановленны, так как является альтом $MAIN"
-QDKP2_LOC_BK_NOT_RESTORED_BECAUSE_NOT_GUILD = "невозможно восстановить, так как не является челеном гильдии."
-QDKP2_LOC_BK_RESTORED_ENTRIES = "Восстановлено записей: $GET. Отправте изменения, чтобы поменять заметки."
 

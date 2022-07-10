@@ -11,6 +11,7 @@
 QDKP2_Config.xml
 
 Locales\enGB.lua
+Locales\ruRU.lua
 
 QDKP2_Config.lua
 ProfileToGlobal.lua
