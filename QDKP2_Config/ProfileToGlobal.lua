@@ -121,9 +121,9 @@ QDKP2_Config.TransTable={
 	AN_PushFailAw="QDKP2_AnnounceFailAw",
 	AN_PushFailHo="QDKP2_AnnounceFailHo",
 	AN_PushFailIM="QDKP2_AnnounceFailIM",
-	AN_PushModText="QDKP2_AnnounceWhisperTxt",
-	AN_PushModReasText="QDKP2_AnnounceWhisperRes",
-	AN_PushRevText="QDKP2_AnnounceWhisperRev",
+	AN_PushModText="QDKP2_LOC_AnnounceWhisperTxt",
+	AN_PushModReasText="QDKP2_LOC_AnnounceWhisperRes",
+	AN_PushRevText="QDKP2_LOC_AnnounceWhisperRev",
 
 	--Guild Notes
 	FOR_OfficerOrPublic='QDKP2_OfficerOrPublic',
