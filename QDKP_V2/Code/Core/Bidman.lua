@@ -261,6 +261,10 @@ function QDKP2_BidM_BidWatcher(txt, player, channel)
     txt = string.lower(txt)
     txt = string.gsub(txt, "^[%s]+", "")
     txt = string.gsub(txt, "[%s]+$", "")
+    for firstTxt in string.gmatch(txt, "[^%s]+") do
+        txt = firstTxt
+        break
+    end
     table.insert(QDKP2_BidM_Keywords, { keywords = "$nk, $nк", value = "$n*1000" })
     table.insert(QDKP2_BidM_Keywords, { keywords = "$n.$lk, $n.$lк", value = "$n*1000", val = "$l*100" })
     for i, v in pairs(QDKP2_BidM_Keywords) do
@@ -349,7 +353,7 @@ function QDKP2_BidM_BidWatcher(txt, player, channel)
                             return false
                         elseif currentValue ~= nil and dkp < currentValue then
                             --is the bid less current max bid another player?
-                            local mess = QDKP2_LOC_BidLessCurrentBid
+                            local mess = QDKP2_LOC_BidLessCurrentBidц
                             if currentValue < QDKP2_BidM_BidStep1 then
                                 mess = string.gsub(mess, "$MINSTEP", tostring(QDKP2_BidM_MinBid))
                             elseif currentValue >= QDKP2_BidM_BidStep1 and currentValue < QDKP2_BidM_BidStep2 then
