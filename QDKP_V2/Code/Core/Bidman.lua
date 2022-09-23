@@ -353,7 +353,7 @@ function QDKP2_BidM_BidWatcher(txt, player, channel)
                             return false
                         elseif currentValue ~= nil and dkp < currentValue then
                             --is the bid less current max bid another player?
-                            local mess = QDKP2_LOC_BidLessCurrentBidц
+                            local mess = QDKP2_LOC_BidLessCurrentBid
                             if currentValue < QDKP2_BidM_BidStep1 then
                                 mess = string.gsub(mess, "$MINSTEP", tostring(QDKP2_BidM_MinBid))
                             elseif currentValue >= QDKP2_BidM_BidStep1 and currentValue < QDKP2_BidM_BidStep2 then
